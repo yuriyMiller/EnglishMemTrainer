@@ -184,6 +184,7 @@ static NSString * const answerPlaceholder = @"Answer";
     NSDictionary *incorrectAttribute = @{NSForegroundColorAttributeName : [UIColor redColor],
                                                     NSFontAttributeName : [UIFont fontWithName:@"SinhalaSangamMN-Bold" size:18.0f]};
     
+    
     NSRange correctRange = [title rangeOfString:correct];
     NSRange incorrectRange = [title rangeOfString:incorrect];
     correctRange.location = correctRange.location + 1;
