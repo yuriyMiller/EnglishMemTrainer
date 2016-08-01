@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "ParseCSV.h"
 #import "Dictionary.h"
+#import "StatisticViewController.h"
 
 static NSString * const answerPlaceholder = @"Answer";
 
@@ -40,7 +41,10 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self setupStartView];
+    if (!visualEffectView) {
+        [self setupStartView];
+    }
+    
     [self setupShowUIButton];
     [self setupSegmentedControl];
 }
@@ -90,6 +94,13 @@ static NSString * const answerPlaceholder = @"Answer";
     [self.view bringSubviewToFront:self.startView];
 }
 
+- (void)setupRightStatisticButton {
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                                                                                 target:self
+                                                                                 action:@selector(actionShowStatistic:)];
+    [self.navigationItem setRightBarButtonItem:rightButton];
+}
+
 - (void)initDictionaryWithParsedFile:(NSArray *)parsedArray {
     NSMutableDictionary *tempContentDictionary =[NSMutableDictionary dictionary];
     self.dictObjectsArray = [NSMutableArray array];
@@ -116,6 +127,8 @@ static NSString * const answerPlaceholder = @"Answer";
     self.answeredIndexesArray = [NSMutableArray array];
     self.correctAnswersArray = [NSMutableArray array];
     self.incorrectAnswersArray = [NSMutableArray array];
+    [self setupRightStatisticButton];
+    [self displayResults];
     [self actionSegment:self.segmentedControl];
     
 }
@@ -156,19 +169,37 @@ static NSString * const answerPlaceholder = @"Answer";
     [self.answeredIndexesArray addObject:[NSNumber numberWithInteger:index]];
 
     self.dictObject = [self.dictObjectsArray objectAtIndex:index];
-    
 }
 
-- (void)displayResults:(NSString *)string {
-    NSString *title = @"Result:";
+- (void)displayResults{
+    NSString *title = [NSString stringWithFormat:@"Result: %d/%d", _correctResult, _incorrectResult];
+    NSString *correct = @": ";
+    NSString *incorrect = @"/";
     
+    NSDictionary *titleAttribute = @{NSForegroundColorAttributeName : [UIColor grayColor],
+                                                NSFontAttributeName : [UIFont fontWithName:@"SinhalaSangamMN" size:18.0f]};
     NSDictionary *correctAttribute = @{NSForegroundColorAttributeName : [UIColor greenColor],
-                                       NSFontAttributeName : [UIFont boldSystemFontOfSize:14.0f]};
+                                                  NSFontAttributeName : [UIFont fontWithName:@"SinhalaSangamMN-Bold" size:18.0f]};
     NSDictionary *incorrectAttribute = @{NSForegroundColorAttributeName : [UIColor redColor],
-                                       NSFontAttributeName : [UIFont boldSystemFontOfSize:14.0f]};
-    NSMutableAttributedString *atributedString = [NSMutableAttributedString alloc] initWithString:<#(nonnull NSString *)#> attributes:<#(nullable NSDictionary<NSString *,id> *)#>
-    self.navigationItem.title = [NSString stringWithFormat:@"Result:%d/%d", _correctResult, _incorrectResult];
+                                                    NSFontAttributeName : [UIFont fontWithName:@"SinhalaSangamMN-Bold" size:18.0f]};
+    
+    
+    NSRange correctRange = [title rangeOfString:correct];
+    NSRange incorrectRange = [title rangeOfString:incorrect];
+    correctRange.location = correctRange.location + 1;
+    incorrectRange.location = incorrectRange.location + 1;
+    
+    NSMutableAttributedString *atributedString = [[NSMutableAttributedString alloc] initWithString:title];
+    [atributedString setAttributes:titleAttribute range:NSMakeRange(0, title.length)];
+    [atributedString setAttributes:correctAttribute range:correctRange];
+    [atributedString setAttributes:incorrectAttribute range:incorrectRange];
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.attributedText = atributedString;
+    self.navigationItem.titleView = label;
+    [self.navigationItem.titleView sizeToFit];
 }
+
 #pragma mark - Timer
 
 - (void)startTimer {
@@ -247,7 +278,7 @@ static NSString * const answerPlaceholder = @"Answer";
             _correctResult++;
         }
     }
-    
+    [self displayResults];
     [self removeGestureRecogniserInteration];
     
 }
@@ -295,6 +326,7 @@ static NSString * const answerPlaceholder = @"Answer";
 - (IBAction)actionStartQuiz:(UIButton *)sender {
     [self setDefaultSettings];
     [self startTimer];
+    
     [UIView animateWithDuration:0.2
                      animations:^{
                          self.startView.alpha = 0.0;
@@ -321,4 +353,9 @@ static NSString * const answerPlaceholder = @"Answer";
     self.answerLabel.text = answerPlaceholder;
 }
 
+- (void)actionShowStatistic:(UIBarButtonItem *)sender {
+    StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
+    [self.navigationController pushViewController:statisticVC animated:YES];
+    
+}
 @end
