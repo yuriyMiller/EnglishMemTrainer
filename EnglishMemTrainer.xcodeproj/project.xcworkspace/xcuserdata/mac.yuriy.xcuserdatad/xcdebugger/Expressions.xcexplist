@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionShowResult:]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.selected">
+            </PersistentString>
+            <PersistentString
+               value = "sender.isHighlighted">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController touchesEnded:withEvent:]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "touch.tapCount">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionSingleTap:]:MainInteractiveViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionDoubleTap:]:MainInteractiveViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ParseCSV trimmCharactersFromString:]:ParseCSV.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "string.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionEnglishLang:]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.enabled">
+            </PersistentString>
+            <PersistentString
+               value = "sender.isEnabled">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController manageGestureRecogniserInteration]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "gestureRecogniser.enabled">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController viewDidLoad]:MainInteractiveViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionRecognizer:]:MainInteractiveViewController.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
