@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E2B99691D4F93C30069F59C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B99681D4F93C30069F59C /* .gitignore */; };
+		3E2B996B1D4F9FD40069F59C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B996A1D4F9FD40069F59C /* .gitignore */; };
 		3E963C5B1D37E0BD00E4E8A7 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E963C5A1D37E0BD00E4E8A7 /* reveal-icon.png */; };
 		3E963C5F1D37EB3000E4E8A7 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C5E1D37EB3000E4E8A7 /* MenuTableViewCell.m */; };
 		3E963C631D37EC0F00E4E8A7 /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C621D37EC0F00E4E8A7 /* SideBarTableViewController.m */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3E2B99681D4F93C30069F59C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3E2B996A1D4F9FD40069F59C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = EnglishMemTrainer/.gitignore; sourceTree = "<group>"; };
 		3E963C5A1D37E0BD00E4E8A7 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		3E963C5D1D37EB3000E4E8A7 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		3E963C5E1D37EB3000E4E8A7 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
@@ -89,6 +89,7 @@
 		3EC9D6F61D37C75C009B0B59 = {
 			isa = PBXGroup;
 			children = (
+				3E2B996A1D4F9FD40069F59C /* .gitignore */,
 				3EC9D7011D37C75D009B0B59 /* EnglishMemTrainer */,
 				3EC9D7001D37C75C009B0B59 /* Products */,
 				86DF9D0536F76C2CC5428B1B /* Pods */,
@@ -132,7 +133,6 @@
 				3E963C5C1D37E0CB00E4E8A7 /* Images */,
 				3EC9D8341D37D3CD009B0B59 /* SWRevealViewController */,
 				3EC9D7021D37C75D009B0B59 /* Supporting Files */,
-				3E2B99681D4F93C30069F59C /* .gitignore */,
 			);
 			path = EnglishMemTrainer;
 			sourceTree = "<group>";
@@ -226,7 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E2B99691D4F93C30069F59C /* .gitignore in Resources */,
+				3E2B996B1D4F9FD40069F59C /* .gitignore in Resources */,
 				3EC9D7151D37C75D009B0B59 /* LaunchScreen.storyboard in Resources */,
 				3EC9D7121D37C75D009B0B59 /* Assets.xcassets in Resources */,
 				3EC9D70D1D37C75D009B0B59 /* Main.storyboard in Resources */,

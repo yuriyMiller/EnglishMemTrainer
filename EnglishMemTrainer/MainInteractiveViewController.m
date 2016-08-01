@@ -35,7 +35,6 @@ static NSString * const answerPlaceholder = @"Answer";
     [self setupRevealController];
 
     [self initDictionaryWithParsedFile:[self getParsedArray]];
-    [self getRandomDictObject];
     
 }
 
@@ -104,23 +103,33 @@ static NSString * const answerPlaceholder = @"Answer";
 - (void)initDictionaryWithParsedFile:(NSArray *)parsedArray {
     NSMutableDictionary *tempContentDictionary =[NSMutableDictionary dictionary];
     self.dictObjectsArray = [NSMutableArray array];
-    
-    for (NSArray *array in parsedArray) {
-        Dictionary *dictContent = [[Dictionary alloc] initWithArray:array];
-        [self.dictObjectsArray addObject:dictContent];
-        
-        if (array.count >= 2) {
-            [tempContentDictionary addEntriesFromDictionary:@{[array objectAtIndex:0] : [array objectAtIndex:1]}];
+    if (parsedArray) {
+        for (NSArray *array in parsedArray) {
+            Dictionary *dictContent = [[Dictionary alloc] initWithArray:array];
+            [self.dictObjectsArray addObject:dictContent];
+            
+            if (array.count >= 2) {
+                [tempContentDictionary addEntriesFromDictionary:@{[array objectAtIndex:0] : [array objectAtIndex:1]}];
+            }
         }
+        self.contentDict = [[NSDictionary alloc] initWithDictionary:tempContentDictionary];
+        [self getRandomIndex];
     }
-    self.contentDict = [[NSDictionary alloc] initWithDictionary:tempContentDictionary];
+    
     //[self printElements:self.contentDict];
     //[self printElements:self.dictObjectsArray];
 }
 
 - (NSArray *)getParsedArray {
     NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/google.csv"];
-    return [[ParseCSV sharedManager] readCSVFile:path];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path] ) {
+        return [[ParseCSV sharedManager] readCSVFile:path];
+    } else {
+        NSString *error = @"File is not exist";
+        NSLog(@"%@", error);
+        [self showAlert:error];
+        return nil;
+    }
 }
 
 - (void)setDefaultSettings {
@@ -357,5 +366,15 @@ static NSString * const answerPlaceholder = @"Answer";
     StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
     [self.navigationController pushViewController:statisticVC animated:YES];
     
+}
+
+#pragma mark - Alert View
+
+- (void)showAlert:(NSString *)message {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning"
+                                                    message:message delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 @end

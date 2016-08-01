@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MainInteractiveViewController : UIViewController
+@interface MainInteractiveViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *quizLable;
 @property (weak, nonatomic) IBOutlet UILabel *answerLabel;
