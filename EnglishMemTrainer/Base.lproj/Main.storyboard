@@ -8,7 +8,7 @@
         <!--Main Interactive View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MIVC" id="BYZ-38-t0r" customClass="MainInteractiveViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainInteractiveViewController" id="BYZ-38-t0r" customClass="MainInteractiveViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -88,14 +88,82 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VON-Aa-KE3">
+                                <rect key="frame" x="115" y="253" width="90" height="62"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="Gok-dT-qGa"/>
+                                    <constraint firstAttribute="width" constant="90" id="I3l-ks-cJp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="60"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-Zl-Hlf" userLabel="StartVew">
                                 <rect key="frame" x="0.0" y="-1" width="320" height="570"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaN-SY-oMk" userLabel="Button Container View">
-                                        <rect key="frame" x="40" y="241" width="240" height="128"/>
+                                        <rect key="frame" x="40" y="196" width="240" height="302"/>
                                         <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dK6-i5-5oK" customClass="CustomButton">
+                                                <rect key="frame" x="8" y="201" width="224" height="83"/>
+                                                <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="24"/>
+                                                <state key="normal" title="INFO">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="35"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="1" green="0.93038634909999995" blue="0.25127277279999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="1" green="0.81620826570000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.99511217949999997" green="0.97236362210000005" blue="0.52478209689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionInfo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XXV-Bx-1MX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6bx-iq-9nX" customClass="CustomButton">
+                                                <rect key="frame" x="8" y="104" width="224" height="83"/>
+                                                <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="24"/>
+                                                <state key="normal" title="RESUME">
+                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadious">
+                                                        <real key="value" value="35"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" red="1" green="0.93038634909999995" blue="0.25127277279999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="1" green="0.81620826570000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.99511217949999997" green="0.97236362210000005" blue="0.52478209689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="actionResume:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BE7-I6-VA3"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tb3-mt-546" customClass="CustomButton">
-                                                <rect key="frame" x="8" y="22" width="224" height="83"/>
+                                                <rect key="frame" x="8" y="8" width="224" height="83"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="83" id="Xpv-si-jz4"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" name="SinhalaSangamMN-Bold" family="Sinhala Sangam MN" pointSize="24"/>
                                                 <state key="normal" title="START">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,13 +190,21 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Tb3-mt-546" firstAttribute="leading" secondItem="iaN-SY-oMk" secondAttribute="leading" constant="8" id="9PR-zE-gwo"/>
-                                            <constraint firstAttribute="height" constant="128" id="Otd-Mc-N5j"/>
+                                            <constraint firstItem="dK6-i5-5oK" firstAttribute="height" secondItem="Tb3-mt-546" secondAttribute="height" id="C5t-uT-7mT"/>
+                                            <constraint firstItem="6bx-iq-9nX" firstAttribute="height" secondItem="Tb3-mt-546" secondAttribute="height" id="FRZ-IG-ygr"/>
+                                            <constraint firstAttribute="trailing" secondItem="dK6-i5-5oK" secondAttribute="trailing" constant="8" id="Hfh-JX-eZs"/>
+                                            <constraint firstItem="dK6-i5-5oK" firstAttribute="leading" secondItem="iaN-SY-oMk" secondAttribute="leading" constant="8" id="Ipp-g1-A9F"/>
+                                            <constraint firstAttribute="height" constant="302" id="Otd-Mc-N5j"/>
+                                            <constraint firstItem="6bx-iq-9nX" firstAttribute="top" secondItem="Tb3-mt-546" secondAttribute="bottom" constant="13" id="f2U-lE-rBc"/>
                                             <constraint firstItem="Tb3-mt-546" firstAttribute="centerX" secondItem="iaN-SY-oMk" secondAttribute="centerX" id="iEq-BK-BwN"/>
-                                            <constraint firstItem="Tb3-mt-546" firstAttribute="top" secondItem="iaN-SY-oMk" secondAttribute="top" constant="22" id="mSZ-Ol-B8v"/>
-                                            <constraint firstItem="Tb3-mt-546" firstAttribute="centerY" secondItem="iaN-SY-oMk" secondAttribute="centerY" id="mZc-aF-T6P"/>
+                                            <constraint firstItem="Tb3-mt-546" firstAttribute="top" secondItem="iaN-SY-oMk" secondAttribute="top" constant="8" id="mSZ-Ol-B8v"/>
+                                            <constraint firstAttribute="trailing" secondItem="6bx-iq-9nX" secondAttribute="trailing" constant="8" id="rd2-iK-wlp"/>
+                                            <constraint firstItem="dK6-i5-5oK" firstAttribute="top" secondItem="6bx-iq-9nX" secondAttribute="bottom" constant="14" id="sen-xV-3gc"/>
+                                            <constraint firstAttribute="bottom" secondItem="dK6-i5-5oK" secondAttribute="bottom" constant="18" id="srC-Nb-674"/>
+                                            <constraint firstItem="6bx-iq-9nX" firstAttribute="leading" secondItem="iaN-SY-oMk" secondAttribute="leading" constant="8" id="zmp-TF-cnt"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -136,34 +212,23 @@
                                 <constraints>
                                     <constraint firstItem="iaN-SY-oMk" firstAttribute="leading" secondItem="wtb-Zl-Hlf" secondAttribute="leading" constant="40" id="R6I-oF-Q3W"/>
                                     <constraint firstAttribute="trailing" secondItem="iaN-SY-oMk" secondAttribute="trailing" constant="40" id="YrJ-ue-yt8"/>
-                                    <constraint firstItem="iaN-SY-oMk" firstAttribute="top" secondItem="wtb-Zl-Hlf" secondAttribute="top" constant="241" id="l19-So-HTV"/>
+                                    <constraint firstItem="iaN-SY-oMk" firstAttribute="top" secondItem="wtb-Zl-Hlf" secondAttribute="top" constant="196" id="l19-So-HTV"/>
                                 </constraints>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VON-Aa-KE3">
-                                <rect key="frame" x="114" y="255" width="90" height="62"/>
-                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="Gok-dT-qGa"/>
-                                    <constraint firstAttribute="width" constant="90" id="I3l-ks-cJp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="KohinoorDevanagari-Light" family="Kohinoor Devanagari" pointSize="60"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="VON-Aa-KE3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="1uG-jc-Au4"/>
                             <constraint firstItem="kVz-EV-oPn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="6Es-xi-mrx"/>
                             <constraint firstItem="wtb-Zl-Hlf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7ey-fg-W9g"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tJu-ea-DvN" secondAttribute="bottom" id="Bys-bg-mQJ"/>
                             <constraint firstAttribute="bottom" secondItem="wtb-Zl-Hlf" secondAttribute="bottom" constant="-1" id="CG0-jf-pFX"/>
                             <constraint firstItem="kVz-EV-oPn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IZ8-7P-yrI"/>
                             <constraint firstItem="wtb-Zl-Hlf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-1" id="JG1-76-bex"/>
-                            <constraint firstItem="VON-Aa-KE3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-1" id="N5c-1B-hRv"/>
                             <constraint firstAttribute="trailing" secondItem="wtb-Zl-Hlf" secondAttribute="trailing" id="b5t-dJ-49v"/>
-                            <constraint firstItem="VON-Aa-KE3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="2" id="dbL-kM-MDr"/>
                             <constraint firstAttribute="trailing" secondItem="tJu-ea-DvN" secondAttribute="trailing" id="dvv-5A-kM9"/>
                             <constraint firstItem="X2b-Y5-CiF" firstAttribute="height" secondItem="fI2-Pu-jak" secondAttribute="height" constant="5" id="fyq-vO-cAF"/>
+                            <constraint firstItem="VON-Aa-KE3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pbo-ur-ibX"/>
                             <constraint firstItem="tJu-ea-DvN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qPu-zA-qgk"/>
                             <constraint firstItem="tJu-ea-DvN" firstAttribute="height" secondItem="kVz-EV-oPn" secondAttribute="height" constant="60" id="qgP-3P-jJa"/>
                             <constraint firstAttribute="trailing" secondItem="kVz-EV-oPn" secondAttribute="trailing" id="t90-NS-a1e"/>
@@ -174,11 +239,14 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="answerLabel" destination="X2b-Y5-CiF" id="pat-Rj-O1j"/>
+                        <outlet property="infoButton" destination="dK6-i5-5oK" id="Bul-jT-hcV"/>
                         <outlet property="quizLable" destination="fI2-Pu-jak" id="uqe-cO-MeP"/>
                         <outlet property="quizView" destination="kVz-EV-oPn" id="psd-5v-VCn"/>
+                        <outlet property="resumeButton" destination="6bx-iq-9nX" id="jew-AN-1wj"/>
                         <outlet property="segmentedControl" destination="28A-uH-x9X" id="WPP-yv-RLp"/>
                         <outlet property="showButton" destination="Pzd-Sy-I3b" id="gnK-EK-TTQ"/>
                         <outlet property="startButton" destination="Tb3-mt-546" id="Aeq-O3-J2S"/>
+                        <outlet property="startButtonConteiner" destination="iaN-SY-oMk" id="OqQ-we-q2t"/>
                         <outlet property="startView" destination="wtb-Zl-Hlf" id="vRq-F4-B3X"/>
                         <outlet property="timerLabel" destination="VON-Aa-KE3" id="02G-ft-qTZ"/>
                     </connections>

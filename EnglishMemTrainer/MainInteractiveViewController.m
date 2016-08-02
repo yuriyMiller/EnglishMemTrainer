@@ -17,7 +17,10 @@ static NSString * const answerPlaceholder = @"Answer";
 @interface MainInteractiveViewController () {
     UIVisualEffectView *visualEffectView;
     NSTimer *_timer;
+    NSTimer *_sessionTimer;
     int _timeSec;
+    int _sessionSec;
+    int _sessionMin;
     int _correctResult;
     int _incorrectResult;
 }
@@ -25,6 +28,8 @@ static NSString * const answerPlaceholder = @"Answer";
 @property (strong, nonatomic) NSMutableArray *answeredIndexesArray;
 @property (strong, nonatomic) Dictionary *dictObject;
 @property (strong, nonatomic) NSArray *gestureRecognizerArray;
+@property (strong, nonatomic) NSDate *pauseStart;
+@property (strong, nonatomic) NSDate *previousFireDate;
 
 @end
 
@@ -36,6 +41,7 @@ static NSString * const answerPlaceholder = @"Answer";
 
     [self initDictionaryWithParsedFile:[self getParsedArray]];
     
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,6 +52,9 @@ static NSString * const answerPlaceholder = @"Answer";
     
     [self setupShowUIButton];
     [self setupSegmentedControl];
+    if (self.pauseStart != nil && self.previousFireDate != nil) {
+        [self resumePause];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -90,7 +99,33 @@ static NSString * const answerPlaceholder = @"Answer";
     visualEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
     visualEffectView.frame = self.view.bounds;
     [self.view addSubview:visualEffectView];
+
+    [self.startView setAlpha:1.0f];
+    [self.startView setHidden:NO];
     [self.view bringSubviewToFront:self.startView];
+    [self setupStartViewButtons];
+}
+
+- (void) setupStartViewButtons {
+    if (_sessionTimer) {
+        [self disableButton:self.startButton];
+        [self enableButton:self.resumeButton];
+        [self enableButton:self.infoButton];
+    } else {
+        [self enableButton:self.startButton];
+        [self disableButton:self.resumeButton];
+        [self disableButton:self.infoButton];
+    }
+}
+
+- (void)disableButton:(UIButton *)button {
+    [button setAlpha:0.55f];
+    [button setEnabled:NO];
+}
+
+- (void)enableButton:(UIButton *)button {
+    [button setAlpha:1.f];
+    [button setEnabled:YES];
 }
 
 - (void)setupRightStatisticButton {
@@ -113,7 +148,7 @@ static NSString * const answerPlaceholder = @"Answer";
             }
         }
         self.contentDict = [[NSDictionary alloc] initWithDictionary:tempContentDictionary];
-        [self getRandomIndex];
+        [self getRandomDictObject];
     }
     
     //[self printElements:self.contentDict];
@@ -219,7 +254,14 @@ static NSString * const answerPlaceholder = @"Answer";
                                             selector:@selector(timerTick:)
                                             userInfo:nil
                                              repeats:YES];
+    _sessionTimer = [NSTimer scheduledTimerWithTimeInterval:1.0f
+                                                     target:self
+                                                   selector:@selector(sessionTimerTick:)
+                                                   userInfo:nil
+                                                    repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:_timer
+                                 forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] addTimer:_sessionTimer
                                  forMode:NSDefaultRunLoopMode];
 }
 
@@ -243,6 +285,31 @@ static NSString * const answerPlaceholder = @"Answer";
         [self stopTimer];
         [self actionShowResult:self.showButton];
     }
+}
+
+- (void)sessionTimerTick:(NSTimer *)timer {
+    _sessionSec++;
+    if (_sessionSec % 5 == 0) {
+        NSString *timerResult = [NSString stringWithFormat:@"%02d:%02d", _sessionMin, _sessionSec];
+        NSLog(@"%@", timerResult);
+    }
+    
+    if (_sessionSec == 60) {
+        _sessionSec = 0;
+        _sessionMin++;
+    }
+}
+
+- (void)startPause {
+    self.pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
+    self.previousFireDate = [_sessionTimer fireDate];
+    NSLog(@"%@ %@", self.pauseStart, self.previousFireDate);
+    [_sessionTimer setFireDate:[NSDate distantFuture]];
+}
+
+- (void)resumePause {
+    float pauseTime = -1 * [self.pauseStart timeIntervalSinceNow];
+    [_sessionTimer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:self.previousFireDate]];
 }
 
 #pragma mark - GestureRecognizer
@@ -335,14 +402,18 @@ static NSString * const answerPlaceholder = @"Answer";
 - (IBAction)actionStartQuiz:(UIButton *)sender {
     [self setDefaultSettings];
     [self startTimer];
+    [self hideStartViewWithAnimation];
     
-    [UIView animateWithDuration:0.2
-                     animations:^{
-                         self.startView.alpha = 0.0;
-                     } completion:^(BOOL finished) {
-                         [self.startView removeFromSuperview];
-                         [visualEffectView removeFromSuperview];
-                     }];
+}
+
+- (IBAction)actionResume:(UIButton *)sender {
+    [self resumePause];
+    [self hideStartViewWithAnimation];
+}
+
+- (IBAction)actionInfo:(UIButton *)sender {
+    StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
+    [self.navigationController pushViewController:statisticVC animated:YES];
 }
 
 - (void)actionSegment:(UISegmentedControl *)sender {
@@ -363,9 +434,21 @@ static NSString * const answerPlaceholder = @"Answer";
 }
 
 - (void)actionShowStatistic:(UIBarButtonItem *)sender {
-    StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
-    [self.navigationController pushViewController:statisticVC animated:YES];
+    [self startPause];
+    [self setupStartView];
     
+}
+
+#pragma mark - Animation
+
+- (void)hideStartViewWithAnimation {
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         self.startView.alpha = 0.0;
+                     } completion:^(BOOL finished) {
+                         [self.startView setHidden:YES];
+                         [visualEffectView removeFromSuperview];
+                     }];
 }
 
 #pragma mark - Alert View

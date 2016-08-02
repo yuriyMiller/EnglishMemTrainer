@@ -14,8 +14,6 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
-
         self.borderWidth    = 2;
         self.cornerRadious  = 10;
         [self customInit];

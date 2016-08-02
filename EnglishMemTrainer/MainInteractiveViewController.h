@@ -15,9 +15,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 @property (weak, nonatomic) IBOutlet UIButton *showButton;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (weak, nonatomic) IBOutlet UIButton *resumeButton;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet  UIView *quizView;
-@property (weak, nonatomic) IBOutlet  UIView *startView;
+@property (strong, nonatomic) IBOutlet  UIView *startView;
+@property (weak, nonatomic) IBOutlet  UIView *startButtonConteiner;
 @property (weak, nonatomic) UIBarButtonItem *menuButton;
 
 
