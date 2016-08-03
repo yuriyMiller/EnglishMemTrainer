@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
+    <entity name="Dictionary" syncable="YES">
+        <attribute name="keyAttribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sentenceAttribute" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueAttribute" optional="YES" syncable="YES"/>
+        <relationship name="vocabluary" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Vocabluary" inverseName="dictionaries" inverseEntity="Vocabluary" syncable="YES"/>
+    </entity>
+    <entity name="Storage" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="vocabularies" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Vocabluary" inverseName="storage" inverseEntity="Vocabluary" syncable="YES"/>
+    </entity>
+    <entity name="Vocabluary" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="dictionaries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Dictionary" inverseName="vocabluary" inverseEntity="Dictionary" syncable="YES"/>
+        <relationship name="storage" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Storage" inverseName="vocabularies" inverseEntity="Storage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Vocabluary" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Dictionary" positionX="133" positionY="86" width="128" height="103"/>
+        <element name="Storage" positionX="-216" positionY="-108" width="128" height="73"/>
+    </elements>
 </model>
