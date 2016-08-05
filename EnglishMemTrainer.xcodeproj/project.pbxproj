@@ -8,12 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		3E2B996D1D4FA21B0069F59C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B996C1D4FA21B0069F59C /* .gitignore */; };
+		3E2B998F1D51F4330069F59C /* Storage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99861D51F4330069F59C /* Storage+CoreDataProperties.m */; };
+		3E2B99901D51F4330069F59C /* Storage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99881D51F4330069F59C /* Storage.m */; };
+		3E2B99911D51F4330069F59C /* Vocabluary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B998A1D51F4330069F59C /* Vocabluary+CoreDataProperties.m */; };
+		3E2B99921D51F4330069F59C /* Vocabluary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B998C1D51F4330069F59C /* Vocabluary.m */; };
+		3E2B99951D51F51F0069F59C /* CoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99941D51F51F0069F59C /* CoreDataManager.m */; };
+		3E2B99A61D521FC40069F59C /* Dictionary+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99A31D521FC40069F59C /* Dictionary+CoreDataProperties.m */; };
+		3E2B99A71D521FC40069F59C /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99A51D521FC40069F59C /* Dictionary.m */; };
+		3E2B99AA1D5236020069F59C /* EnglishMemConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99A91D5236020069F59C /* EnglishMemConst.m */; };
 		3E963C5B1D37E0BD00E4E8A7 /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E963C5A1D37E0BD00E4E8A7 /* reveal-icon.png */; };
 		3E963C5F1D37EB3000E4E8A7 /* MenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C5E1D37EB3000E4E8A7 /* MenuTableViewCell.m */; };
 		3E963C631D37EC0F00E4E8A7 /* SideBarTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C621D37EC0F00E4E8A7 /* SideBarTableViewController.m */; };
 		3E963C661D38EA8500E4E8A7 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C651D38EA8500E4E8A7 /* SettingsTableViewController.m */; };
 		3E963C691D3CEBB200E4E8A7 /* ParseCSV.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C681D3CEBB200E4E8A7 /* ParseCSV.m */; };
-		3E963C6C1D3E251800E4E8A7 /* Dictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E963C6B1D3E251800E4E8A7 /* Dictionary.m */; };
 		3EA9020F1D42465F003868C9 /* CustomButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA9020E1D42465F003868C9 /* CustomButton.m */; };
 		3EC9D7041D37C75D009B0B59 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9D7031D37C75D009B0B59 /* main.m */; };
 		3EC9D7071D37C75D009B0B59 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC9D7061D37C75D009B0B59 /* AppDelegate.m */; };
@@ -28,6 +35,22 @@
 
 /* Begin PBXFileReference section */
 		3E2B996C1D4FA21B0069F59C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		3E2B99851D51F4330069F59C /* Storage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Storage+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3E2B99861D51F4330069F59C /* Storage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Storage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3E2B99871D51F4330069F59C /* Storage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
+		3E2B99881D51F4330069F59C /* Storage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Storage.m; sourceTree = "<group>"; };
+		3E2B99891D51F4330069F59C /* Vocabluary+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Vocabluary+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3E2B998A1D51F4330069F59C /* Vocabluary+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Vocabluary+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3E2B998B1D51F4330069F59C /* Vocabluary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vocabluary.h; sourceTree = "<group>"; };
+		3E2B998C1D51F4330069F59C /* Vocabluary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Vocabluary.m; sourceTree = "<group>"; };
+		3E2B99931D51F51F0069F59C /* CoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataManager.h; sourceTree = "<group>"; };
+		3E2B99941D51F51F0069F59C /* CoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataManager.m; sourceTree = "<group>"; };
+		3E2B99A21D521FC40069F59C /* Dictionary+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Dictionary+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3E2B99A31D521FC40069F59C /* Dictionary+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Dictionary+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3E2B99A41D521FC40069F59C /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
+		3E2B99A51D521FC40069F59C /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
+		3E2B99A81D5236020069F59C /* EnglishMemConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnglishMemConst.h; sourceTree = "<group>"; };
+		3E2B99A91D5236020069F59C /* EnglishMemConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnglishMemConst.m; sourceTree = "<group>"; };
 		3E963C5A1D37E0BD00E4E8A7 /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reveal-icon.png"; sourceTree = "<group>"; };
 		3E963C5D1D37EB3000E4E8A7 /* MenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewCell.h; sourceTree = "<group>"; };
 		3E963C5E1D37EB3000E4E8A7 /* MenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewCell.m; sourceTree = "<group>"; };
@@ -37,8 +60,6 @@
 		3E963C651D38EA8500E4E8A7 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		3E963C671D3CEBB200E4E8A7 /* ParseCSV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParseCSV.h; sourceTree = "<group>"; };
 		3E963C681D3CEBB200E4E8A7 /* ParseCSV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParseCSV.m; sourceTree = "<group>"; };
-		3E963C6A1D3E251800E4E8A7 /* Dictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dictionary.h; sourceTree = "<group>"; };
-		3E963C6B1D3E251800E4E8A7 /* Dictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dictionary.m; sourceTree = "<group>"; };
 		3EA9020D1D42465F003868C9 /* CustomButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomButton.h; sourceTree = "<group>"; };
 		3EA9020E1D42465F003868C9 /* CustomButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomButton.m; sourceTree = "<group>"; };
 		3EC9D6FF1D37C75C009B0B59 /* EnglishMemTrainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishMemTrainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +90,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E2B99801D51F4330069F59C /* CoreDataModel */ = {
+			isa = PBXGroup;
+			children = (
+				3E2B99A21D521FC40069F59C /* Dictionary+CoreDataProperties.h */,
+				3E2B99A31D521FC40069F59C /* Dictionary+CoreDataProperties.m */,
+				3E2B99A41D521FC40069F59C /* Dictionary.h */,
+				3E2B99A51D521FC40069F59C /* Dictionary.m */,
+				3E2B99851D51F4330069F59C /* Storage+CoreDataProperties.h */,
+				3E2B99861D51F4330069F59C /* Storage+CoreDataProperties.m */,
+				3E2B99871D51F4330069F59C /* Storage.h */,
+				3E2B99881D51F4330069F59C /* Storage.m */,
+				3E2B99891D51F4330069F59C /* Vocabluary+CoreDataProperties.h */,
+				3E2B998A1D51F4330069F59C /* Vocabluary+CoreDataProperties.m */,
+				3E2B998B1D51F4330069F59C /* Vocabluary.h */,
+				3E2B998C1D51F4330069F59C /* Vocabluary.m */,
+			);
+			path = CoreDataModel;
+			sourceTree = "<group>";
+		};
 		3E963C5C1D37E0CB00E4E8A7 /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +129,8 @@
 		3EC9D6F61D37C75C009B0B59 = {
 			isa = PBXGroup;
 			children = (
+				3E2B99A81D5236020069F59C /* EnglishMemConst.h */,
+				3E2B99A91D5236020069F59C /* EnglishMemConst.m */,
 				3E2B996C1D4FA21B0069F59C /* .gitignore */,
 				3EC9D7011D37C75D009B0B59 /* EnglishMemTrainer */,
 				3EC9D7001D37C75C009B0B59 /* Products */,
@@ -112,12 +154,12 @@
 				3EC9D7061D37C75D009B0B59 /* AppDelegate.m */,
 				3EC9D71C1D37CA03009B0B59 /* MainInteractiveViewController.h */,
 				3EC9D71D1D37CA03009B0B59 /* MainInteractiveViewController.m */,
+				3E2B99931D51F51F0069F59C /* CoreDataManager.h */,
+				3E2B99941D51F51F0069F59C /* CoreDataManager.m */,
 				3EE703F71D48ED0E00A73446 /* StatisticViewController.h */,
 				3EE703F81D48ED0E00A73446 /* StatisticViewController.m */,
 				3E963C671D3CEBB200E4E8A7 /* ParseCSV.h */,
 				3E963C681D3CEBB200E4E8A7 /* ParseCSV.m */,
-				3E963C6A1D3E251800E4E8A7 /* Dictionary.h */,
-				3E963C6B1D3E251800E4E8A7 /* Dictionary.m */,
 				3E963C641D38EA8500E4E8A7 /* SettingsTableViewController.h */,
 				3E963C651D38EA8500E4E8A7 /* SettingsTableViewController.m */,
 				3E963C611D37EC0F00E4E8A7 /* SideBarTableViewController.h */,
@@ -132,6 +174,7 @@
 				3E963C601D37EB3600E4E8A7 /* Cells */,
 				3E963C5C1D37E0CB00E4E8A7 /* Images */,
 				3EC9D8341D37D3CD009B0B59 /* SWRevealViewController */,
+				3E2B99801D51F4330069F59C /* CoreDataModel */,
 				3EC9D7021D37C75D009B0B59 /* Supporting Files */,
 			);
 			path = EnglishMemTrainer;
@@ -241,18 +284,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E2B99951D51F51F0069F59C /* CoreDataManager.m in Sources */,
+				3E2B99AA1D5236020069F59C /* EnglishMemConst.m in Sources */,
+				3E2B99911D51F4330069F59C /* Vocabluary+CoreDataProperties.m in Sources */,
 				3E963C661D38EA8500E4E8A7 /* SettingsTableViewController.m in Sources */,
+				3E2B998F1D51F4330069F59C /* Storage+CoreDataProperties.m in Sources */,
 				3EC9D7101D37C75D009B0B59 /* EnglishMemTrainer.xcdatamodeld in Sources */,
 				3EC9D7071D37C75D009B0B59 /* AppDelegate.m in Sources */,
+				3E2B99A61D521FC40069F59C /* Dictionary+CoreDataProperties.m in Sources */,
+				3E2B99921D51F4330069F59C /* Vocabluary.m in Sources */,
 				3EE703F91D48ED0E00A73446 /* StatisticViewController.m in Sources */,
 				3EC9D71E1D37CA03009B0B59 /* MainInteractiveViewController.m in Sources */,
 				3EA9020F1D42465F003868C9 /* CustomButton.m in Sources */,
+				3E2B99901D51F4330069F59C /* Storage.m in Sources */,
 				3EC9D8261D37D307009B0B59 /* SWRevealViewController.m in Sources */,
 				3E963C691D3CEBB200E4E8A7 /* ParseCSV.m in Sources */,
 				3E963C631D37EC0F00E4E8A7 /* SideBarTableViewController.m in Sources */,
+				3E2B99A71D521FC40069F59C /* Dictionary.m in Sources */,
 				3E963C5F1D37EB3000E4E8A7 /* MenuTableViewCell.m in Sources */,
 				3EC9D7041D37C75D009B0B59 /* main.m in Sources */,
-				3E963C6C1D3E251800E4E8A7 /* Dictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

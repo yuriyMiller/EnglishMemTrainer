@@ -8,9 +8,12 @@
 
 #import "MainInteractiveViewController.h"
 #import "SWRevealViewController.h"
+#import "StatisticViewController.h"
 #import "ParseCSV.h"
 #import "Dictionary.h"
-#import "StatisticViewController.h"
+#import "Vocabluary.h"
+#import "EnglishMemConst.h"
+#import "CoreDataManager.h"
 
 static NSString * const answerPlaceholder = @"Answer";
 
@@ -38,6 +41,8 @@ static NSString * const answerPlaceholder = @"Answer";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupRevealController];
+    NSArray *testAr = [[CoreDataManager sharedManager] fetchRequestWithEntityName:@"Vocabluary"];
+    [[CoreDataManager sharedManager] printFetchedResult:testAr];
 
     [self initDictionaryWithParsedFile:[self getParsedArray]];
     
@@ -135,18 +140,33 @@ static NSString * const answerPlaceholder = @"Answer";
     [self.navigationItem setRightBarButtonItem:rightButton];
 }
 
+- (void)setDefaultSettings {
+    self.answeredIndexesArray = [NSMutableArray array];
+    self.correctAnswersArray = [NSMutableArray array];
+    self.incorrectAnswersArray = [NSMutableArray array];
+    [self setupRightStatisticButton];
+    [self displayResults];
+    [self actionSegment:self.segmentedControl];
+    
+}
+
+#pragma mark - Initialization
+
 - (void)initDictionaryWithParsedFile:(NSArray *)parsedArray {
     NSMutableDictionary *tempContentDictionary =[NSMutableDictionary dictionary];
     self.dictObjectsArray = [NSMutableArray array];
+    
     if (parsedArray) {
         for (NSArray *array in parsedArray) {
-            Dictionary *dictContent = [[Dictionary alloc] initWithArray:array];
+            //Dictionary *dictContent = [[Dictionary alloc] initWithArray:array];
+            Dictionary *dictContent = [[CoreDataManager sharedManager] addDictionaryWithArray:array];
             [self.dictObjectsArray addObject:dictContent];
             
             if (array.count >= 2) {
                 [tempContentDictionary addEntriesFromDictionary:@{[array objectAtIndex:0] : [array objectAtIndex:1]}];
             }
         }
+        [self saveToCoreData];
         self.contentDict = [[NSDictionary alloc] initWithDictionary:tempContentDictionary];
         [self getRandomDictObject];
     }
@@ -156,7 +176,7 @@ static NSString * const answerPlaceholder = @"Answer";
 }
 
 - (NSArray *)getParsedArray {
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/google.csv"];
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:[@"Documents/" stringByAppendingString:googleVocab]];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path] ) {
         return [[ParseCSV sharedManager] readCSVFile:path];
     } else {
@@ -165,16 +185,6 @@ static NSString * const answerPlaceholder = @"Answer";
         [self showAlert:error];
         return nil;
     }
-}
-
-- (void)setDefaultSettings {
-    self.answeredIndexesArray = [NSMutableArray array];
-    self.correctAnswersArray = [NSMutableArray array];
-    self.incorrectAnswersArray = [NSMutableArray array];
-    [self setupRightStatisticButton];
-    [self displayResults];
-    [self actionSegment:self.segmentedControl];
-    
 }
 
 #pragma mark - Private methods
@@ -190,8 +200,8 @@ static NSString * const answerPlaceholder = @"Answer";
         NSArray *elementsArray = (NSArray *)elements;
         
         for (Dictionary *element in elementsArray) {
-            NSLog(@"Element:: %@ %@", element.engString,
-                  element.rusString);
+            NSLog(@"Element:: %@ %@", element.engAttribute,
+                  element.rusAttribute);
         }
     }
 }
@@ -242,6 +252,18 @@ static NSString * const answerPlaceholder = @"Answer";
     label.attributedText = atributedString;
     self.navigationItem.titleView = label;
     [self.navigationItem.titleView sizeToFit];
+}
+
+- (void)saveToCoreData {
+    
+//    for (Dictionary *dictObj in self.dictObjectsArray) {
+//        [[CoreDataManager sharedManager] addDictionary:dictObj];
+//        
+//    }
+    [[CoreDataManager sharedManager] addStorageWithName:@"Main Storage"];
+    Vocabluary *vocab = [[CoreDataManager sharedManager] addVocabluaryWithName:googleVocab];
+    [vocab addDictionaries:[NSMutableSet setWithArray:self.dictObjectsArray]];
+    //[[CoreDataManager sharedManager] removeAllEntities];
 }
 
 #pragma mark - Timer
@@ -365,26 +387,15 @@ static NSString * const answerPlaceholder = @"Answer";
     }
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 #pragma mark - Actions
 
 - (IBAction)actionShowResult:(UIButton *)sender {
     sender.selected = ![sender isSelected];
     if (sender.selected) {
         if (self.segmentedControl.selectedSegmentIndex == StateLangEng) {
-            self.answerLabel.text = self.dictObject.rusString;
+            self.answerLabel.text = self.dictObject.rusAttribute;
         } else if (self.segmentedControl.selectedSegmentIndex == StateLangRus) {
-            self.answerLabel.text = self.dictObject.engString;
+            self.answerLabel.text = self.dictObject.engAttribute;
         }
         [sender setTitle:@"NEXT" forState:UIControlStateSelected];
         [sender setTintColor:[UIColor whiteColor]];
@@ -414,6 +425,7 @@ static NSString * const answerPlaceholder = @"Answer";
 - (IBAction)actionInfo:(UIButton *)sender {
     StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
     [self.navigationController pushViewController:statisticVC animated:YES];
+    
 }
 
 - (void)actionSegment:(UISegmentedControl *)sender {
@@ -423,10 +435,10 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (void)showNextQuiz:(UISegmentedControl *)sender {
     if (sender.selectedSegmentIndex == StateLangEng) {
-        self.quizLable.text = self.dictObject.engString;
+        self.quizLable.text = self.dictObject.engAttribute;
         
     } else if (sender.selectedSegmentIndex == StateLangRus) {
-        self.quizLable.text = self.dictObject.rusString;
+        self.quizLable.text = self.dictObject.rusAttribute;
         
     }
     
@@ -436,7 +448,6 @@ static NSString * const answerPlaceholder = @"Answer";
 - (void)actionShowStatistic:(UIBarButtonItem *)sender {
     [self startPause];
     [self setupStartView];
-    
 }
 
 #pragma mark - Animation
