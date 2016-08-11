@@ -277,6 +277,10 @@ static NSString * const answerPlaceholder = @"Answer";
     return NO;
 }
 
+- (void)hideSentenceView{
+    self.infoView.hidden = ![self isSentenceExist];
+}
+
 #pragma mark - Timer
 
 - (void)startTimer {
@@ -380,7 +384,8 @@ static NSString * const answerPlaceholder = @"Answer";
 - (void)actionRecognizer:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:[recognizer.view superview]];
     CGRect frameLabel = [self.answerLabel convertRect:self.answerLabel.frame toView:self.view];
-    CGRect frameimageView = [self.infoView convertRect:self.infoView.frame toView:self.view];
+    CGRect frameimageView = [self.answerLabel convertRect:self.infoView.frame toView:self.view];
+    NSLog(@"%@", self.dictObject.sentenceAttribute);
     if (recognizer.state == UIGestureRecognizerStateEnded && recognizer.numberOfTapsRequired > 1) {
         if (CGRectContainsPoint(frameLabel, location) && ![self.correctAnswersArray containsObject:self.dictObject]) {
             [self.incorrectAnswersArray addObject:self.dictObject];
@@ -390,9 +395,10 @@ static NSString * const answerPlaceholder = @"Answer";
         if (CGRectContainsPoint(frameLabel, location) && ![self.incorrectAnswersArray containsObject:self.dictObject]) {
             [self.correctAnswersArray addObject:self.dictObject];
             _correctResult++;
-        } else if (CGRectContainsPoint(frameimageView, location) && self.dictObject.sentenceAttribute.length > 0) {
-            self.answerLabel.text = self.dictObject.sentenceAttribute;
         }
+    }
+    if (CGRectContainsPoint(frameimageView, location) && self.dictObject.sentenceAttribute.length > 0) {
+        self.answerLabel.text = self.dictObject.sentenceAttribute;
     }
     [self displayResults];
     [self removeGestureRecogniserInteration];
@@ -418,7 +424,6 @@ static NSString * const answerPlaceholder = @"Answer";
         [sender setTitle:@"NEXT" forState:UIControlStateSelected];
         [sender setTintColor:[UIColor whiteColor]];
         [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
-        self.infoView.hidden = ![self isSentenceExist];
         
     } else {
         [self getRandomDictObject];
@@ -428,6 +433,7 @@ static NSString * const answerPlaceholder = @"Answer";
         [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [self startTimer];
     }
+    [self hideSentenceView];
 }
 
 - (IBAction)actionStartQuiz:(UIButton *)sender {

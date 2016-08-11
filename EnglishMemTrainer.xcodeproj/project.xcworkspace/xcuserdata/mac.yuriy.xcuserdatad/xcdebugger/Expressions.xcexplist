@@ -50,6 +50,9 @@
          contextName = "-[MainInteractiveViewController actionSingleTap:]:MainInteractiveViewController.m">
       </ContextState>
       <ContextState
+         contextName = "-[MainInteractiveViewController isSentenceExist]:MainInteractiveViewController.m">
+      </ContextState>
+      <ContextState
          contextName = "-[MainInteractiveViewController manageGestureRecogniserInteration]:MainInteractiveViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -62,6 +65,11 @@
       </ContextState>
       <ContextState
          contextName = "-[MainInteractiveViewController actionRecognizer:]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dictObject.sentenceAttribute">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>
