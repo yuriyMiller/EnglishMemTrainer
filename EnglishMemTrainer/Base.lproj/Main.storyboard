@@ -66,10 +66,22 @@
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="X2b-Y5-CiF">
                                         <rect key="frame" x="8" y="9" width="304" height="115"/>
                                         <color key="backgroundColor" red="0.99511217949999997" green="0.97236362210000005" blue="0.52478209689999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="304" id="clr-hg-aQn"/>
+                                            <constraint firstAttribute="height" constant="115" id="dAn-Cd-Lcs"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info-icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="OmA-WV-yBO">
+                                        <rect key="frame" x="282" y="10" width="30" height="30"/>
+                                        <color key="backgroundColor" red="1" green="0.78824203640000001" blue="0.29774689910000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Kwc-XS-fBz"/>
+                                            <constraint firstAttribute="width" constant="30" id="Ulh-Kg-wX7"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -78,15 +90,9 @@
                                     <constraint firstItem="X2b-Y5-CiF" firstAttribute="leading" secondItem="tJu-ea-DvN" secondAttribute="leading" constant="8" id="TEC-qQ-4Xz"/>
                                     <constraint firstAttribute="trailing" secondItem="X2b-Y5-CiF" secondAttribute="trailing" constant="8" id="UPi-cr-4Mr"/>
                                     <constraint firstAttribute="bottom" secondItem="Pzd-Sy-I3b" secondAttribute="bottom" priority="750" constant="30" id="doW-hQ-FoO"/>
-                                    <constraint firstAttribute="bottom" secondItem="Pzd-Sy-I3b" secondAttribute="bottom" constant="37" id="lsL-kK-rVH"/>
-                                    <constraint firstItem="Pzd-Sy-I3b" firstAttribute="top" secondItem="X2b-Y5-CiF" secondAttribute="bottom" constant="89" id="u95-n6-nEG"/>
+                                    <constraint firstItem="OmA-WV-yBO" firstAttribute="trailing" secondItem="X2b-Y5-CiF" secondAttribute="trailing" id="hnw-QP-0ss"/>
+                                    <constraint firstItem="OmA-WV-yBO" firstAttribute="top" secondItem="X2b-Y5-CiF" secondAttribute="top" constant="1" id="sBY-5i-y1F"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="lsL-kK-rVH"/>
-                                        <exclude reference="u95-n6-nEG"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VON-Aa-KE3">
                                 <rect key="frame" x="115" y="253" width="90" height="62"/>
@@ -240,6 +246,7 @@
                     <connections>
                         <outlet property="answerLabel" destination="X2b-Y5-CiF" id="pat-Rj-O1j"/>
                         <outlet property="infoButton" destination="dK6-i5-5oK" id="Bul-jT-hcV"/>
+                        <outlet property="infoView" destination="OmA-WV-yBO" id="wuC-h2-X2L"/>
                         <outlet property="quizLable" destination="fI2-Pu-jak" id="uqe-cO-MeP"/>
                         <outlet property="quizView" destination="kVz-EV-oPn" id="psd-5v-VCn"/>
                         <outlet property="resumeButton" destination="6bx-iq-9nX" id="jew-AN-1wj"/>
@@ -700,6 +707,9 @@
             <point key="canvasLocation" x="799" y="-42"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info-icon.png" width="256" height="256"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0FY-FT-8jo"/>
     </inferredMetricsTieBreakers>

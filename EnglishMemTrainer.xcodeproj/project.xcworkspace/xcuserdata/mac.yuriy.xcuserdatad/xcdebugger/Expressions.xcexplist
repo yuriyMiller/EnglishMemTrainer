@@ -3,17 +3,6 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[MainInteractiveViewController actionShowResult:]:MainInteractiveViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "sender.selected">
-            </PersistentString>
-            <PersistentString
-               value = "sender.isHighlighted">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[MainInteractiveViewController touchesEnded:withEvent:]:MainInteractiveViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -22,7 +11,18 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MainInteractiveViewController actionSingleTap:]:MainInteractiveViewController.m">
+         contextName = "-[MainInteractiveViewController actionShowResult:]:MainInteractiveViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.selected">
+            </PersistentString>
+            <PersistentString
+               value = "sender.isHighlighted">
+            </PersistentString>
+            <PersistentString
+               value = "[self isSentenceExist]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MainInteractiveViewController actionDoubleTap:]:MainInteractiveViewController.m">
@@ -45,6 +45,9 @@
                value = "sender.isEnabled">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MainInteractiveViewController actionSingleTap:]:MainInteractiveViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[MainInteractiveViewController manageGestureRecogniserInteration]:MainInteractiveViewController.m">

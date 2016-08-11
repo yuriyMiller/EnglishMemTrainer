@@ -56,6 +56,7 @@ static NSString * const answerPlaceholder = @"Answer";
     }
     
     [self setupShowUIButton];
+    [self setupInfoImageView];
     [self setupSegmentedControl];
     if (self.pauseStart != nil && self.previousFireDate != nil) {
         [self resumePause];
@@ -67,6 +68,9 @@ static NSString * const answerPlaceholder = @"Answer";
 }
 
 #pragma mark - UI Setup
+- (void)setupInfoImageView {
+    self.infoView.hidden = YES;
+}
 
 - (void)setupShowUIButton {
     self.showButton.layer.cornerRadius = 5;
@@ -266,6 +270,13 @@ static NSString * const answerPlaceholder = @"Answer";
     //[[CoreDataManager sharedManager] removeAllEntities];
 }
 
+- (BOOL)isSentenceExist {
+    if (self.dictObject.sentenceAttribute && self.dictObject.sentenceAttribute.length > 0) {
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Timer
 
 - (void)startTimer {
@@ -291,6 +302,7 @@ static NSString * const answerPlaceholder = @"Answer";
     [_timer invalidate];
     _timeSec = 0;
     
+    
     [UIView animateWithDuration:0.6f animations:^{
         [self.timerLabel setAlpha:0];
     } completion:^(BOOL finished) {
@@ -301,12 +313,15 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (void)timerTick:(NSTimer *)timer {
     _timeSec++;
+    
+    if (_timeSec == 5 || self.showButton.isSelected) {
+        [self stopTimer];
+        if (!self.showButton.isSelected){
+            [self actionShowResult:self.showButton];
+        }
+    }
     NSString *timerResult = [NSString stringWithFormat:@"%02d", _timeSec];
     self.timerLabel.text = timerResult;
-    if (_timeSec == 5) {
-        [self stopTimer];
-        [self actionShowResult:self.showButton];
-    }
 }
 
 - (void)sessionTimerTick:(NSTimer *)timer {
@@ -364,16 +379,19 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (void)actionRecognizer:(UITapGestureRecognizer *)recognizer {
     CGPoint location = [recognizer locationInView:[recognizer.view superview]];
-    CGRect frame = [self.answerLabel convertRect:self.answerLabel.frame toView:self.view];
+    CGRect frameLabel = [self.answerLabel convertRect:self.answerLabel.frame toView:self.view];
+    CGRect frameimageView = [self.infoView convertRect:self.infoView.frame toView:self.view];
     if (recognizer.state == UIGestureRecognizerStateEnded && recognizer.numberOfTapsRequired > 1) {
-        if (CGRectContainsPoint(frame, location) && ![self.correctAnswersArray containsObject:self.dictObject]) {
+        if (CGRectContainsPoint(frameLabel, location) && ![self.correctAnswersArray containsObject:self.dictObject]) {
             [self.incorrectAnswersArray addObject:self.dictObject];
             _incorrectResult++;
         }
     } else {
-        if (CGRectContainsPoint(frame, location) && ![self.incorrectAnswersArray containsObject:self.dictObject]) {
+        if (CGRectContainsPoint(frameLabel, location) && ![self.incorrectAnswersArray containsObject:self.dictObject]) {
             [self.correctAnswersArray addObject:self.dictObject];
             _correctResult++;
+        } else if (CGRectContainsPoint(frameimageView, location) && self.dictObject.sentenceAttribute.length > 0) {
+            self.answerLabel.text = self.dictObject.sentenceAttribute;
         }
     }
     [self displayResults];
@@ -400,6 +418,8 @@ static NSString * const answerPlaceholder = @"Answer";
         [sender setTitle:@"NEXT" forState:UIControlStateSelected];
         [sender setTintColor:[UIColor whiteColor]];
         [sender setTitleColor:[UIColor darkGrayColor] forState:UIControlStateSelected];
+        self.infoView.hidden = ![self isSentenceExist];
+        
     } else {
         [self getRandomDictObject];
         [self showNextQuiz:self.segmentedControl];
@@ -414,7 +434,6 @@ static NSString * const answerPlaceholder = @"Answer";
     [self setDefaultSettings];
     [self startTimer];
     [self hideStartViewWithAnimation];
-    
 }
 
 - (IBAction)actionResume:(UIButton *)sender {

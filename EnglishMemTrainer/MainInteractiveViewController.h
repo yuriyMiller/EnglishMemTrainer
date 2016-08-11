@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet  UIView *quizView;
+@property (weak, nonatomic) IBOutlet  UIImageView *infoView;
+
 @property (strong, nonatomic) IBOutlet  UIView *startView;
 @property (weak, nonatomic) IBOutlet  UIView *startButtonConteiner;
 @property (weak, nonatomic) UIBarButtonItem *menuButton;
