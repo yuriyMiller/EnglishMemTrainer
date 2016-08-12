@@ -17,4 +17,23 @@ IB_DESIGNABLE
 @property (nonatomic) IBInspectable CGFloat borderWidth;
 @property (nonatomic) IBInspectable CGFloat cornerRadious;
 @property (nonatomic) IBInspectable BOOL isHorizontal;
+
+//@interface Vocabluary : NSManagedObject
+//
+//+ (NSString *)entityName;
+//+ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext *)context;
+//
+//@end
+
+//@implementation Vocabluary
+//
+//+ (NSString *)entityName {
+//    return @"Vocabluary";
+//}
+//
+//+ (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext *)context {
+//    return [NSEntityDescription insertNewObjectForEntityForName:[self entityName]
+//                                         inManagedObjectContext:context];
+//}
+
 @end

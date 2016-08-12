@@ -9,6 +9,7 @@
 #import "CoreDataManager.h"
 #import "EnglishMemConst.h"
 #import "Storage.h"
+#import "Statistic+CoreDataProperties.h"
 #import "Dictionary+CoreDataProperties.h"
 #import "Vocabluary+CoreDataProperties.h"
 
@@ -88,6 +89,17 @@
     return vocabObject;
 }
 
+- (Statistic *)addStatisticWithParams:(NSDictionary *)dict {
+    NSManagedObjectContext *context = managedObjectCOntext;
+    Statistic *statisticObject = [Statistic insertNewObjectIntoContext:context];
+    statisticObject.correct = dict[@""];
+    statisticObject.incorrect = dict[@""];
+    statisticObject.total = dict[@""];
+    statisticObject.currentPage = dict[@""];
+    
+    [self saveWithContext:context];
+    return statisticObject;
+}
 #pragma mark - Save Context
 
 - (void)saveWithContext:(NSManagedObjectContext *)context {

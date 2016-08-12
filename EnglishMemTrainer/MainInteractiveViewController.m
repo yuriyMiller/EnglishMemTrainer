@@ -12,6 +12,7 @@
 #import "ParseCSV.h"
 #import "Dictionary.h"
 #import "Vocabluary.h"
+#import "Statistic.h"
 #import "EnglishMemConst.h"
 #import "CoreDataManager.h"
 
@@ -267,6 +268,8 @@ static NSString * const answerPlaceholder = @"Answer";
     [[CoreDataManager sharedManager] addStorageWithName:@"Main Storage"];
     Vocabluary *vocab = [[CoreDataManager sharedManager] addVocabluaryWithName:googleVocab];
     [vocab addDictionaries:[NSMutableSet setWithArray:self.dictObjectsArray]];
+    Statistic *statistic = [[CoreDataManager sharedManager] addStatistic];
+    statistic.vocabluary = vocab;
     //[[CoreDataManager sharedManager] removeAllEntities];
 }
 
@@ -277,9 +280,6 @@ static NSString * const answerPlaceholder = @"Answer";
     return NO;
 }
 
-- (void)hideSentenceView{
-    self.infoView.hidden = ![self isSentenceExist];
-}
 
 #pragma mark - Timer
 
@@ -449,6 +449,18 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (IBAction)actionInfo:(UIButton *)sender {
     StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
+    statisticVC.correctResult = [NSString stringWithFormat:@"%i", _correctResult];
+    statisticVC.incorrectResult = [NSString stringWithFormat:@"%i", _incorrectResult];
+    statisticVC.totalResult = [NSString stringWithFormat:@"%i", _correctResult + _incorrectResult];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@(_correctResult), @"correct",
+                                                                        @(_incorrectResult), @"incorrect",
+                                                                        @(self.dictObjectsArray.count), @"total",
+                                                                        self.pauseStart, @"sessionTime",
+                                                                        googleVocab, @"currentPage",
+                            nil];
+    Statistic *statisticObject = [[CoreDataManager sharedManager] addStatisticWithParams:params];
+
+    
     [self.navigationController pushViewController:statisticVC animated:YES];
     
 }
@@ -485,6 +497,10 @@ static NSString * const answerPlaceholder = @"Answer";
                          [self.startView setHidden:YES];
                          [visualEffectView removeFromSuperview];
                      }];
+}
+
+- (void)hideSentenceView{
+    self.infoView.hidden = ![self isSentenceExist];
 }
 
 #pragma mark - Alert View

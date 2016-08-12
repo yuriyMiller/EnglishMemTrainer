@@ -488,6 +488,12 @@
                         </connections>
                     </tableView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="correctValueLabel" destination="ha8-hI-r6Y" id="Obf-qV-EGt"/>
+                        <outlet property="incorrectValueLabel" destination="jKF-ka-5Ir" id="Rtw-68-ABd"/>
+                        <outlet property="restWordsValueLabel" destination="LjM-Py-QmC" id="wcy-OB-DCT"/>
+                        <outlet property="totalValueLabel" destination="rVQ-pX-3qj" id="ath-es-XY4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZz-d8-fPo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

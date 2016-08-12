@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E103A1D1D5DF702005A5E60 /* Statistic+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E103A1A1D5DF702005A5E60 /* Statistic+CoreDataProperties.m */; };
+		3E103A1E1D5DF702005A5E60 /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E103A1C1D5DF702005A5E60 /* Statistic.m */; };
 		3E1D41311D58C83D00794A54 /* info-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1D41301D58C83D00794A54 /* info-icon.png */; };
 		3E2B996D1D4FA21B0069F59C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B996C1D4FA21B0069F59C /* .gitignore */; };
 		3E2B998F1D51F4330069F59C /* Storage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99861D51F4330069F59C /* Storage+CoreDataProperties.m */; };
@@ -35,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E103A191D5DF702005A5E60 /* Statistic+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Statistic+CoreDataProperties.h"; sourceTree = "<group>"; };
+		3E103A1A1D5DF702005A5E60 /* Statistic+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Statistic+CoreDataProperties.m"; sourceTree = "<group>"; };
+		3E103A1B1D5DF702005A5E60 /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
+		3E103A1C1D5DF702005A5E60 /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
 		3E1D41301D58C83D00794A54 /* info-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-icon.png"; sourceTree = "<group>"; };
 		3E2B996C1D4FA21B0069F59C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3E2B99851D51F4330069F59C /* Storage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Storage+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -95,6 +101,10 @@
 		3E2B99801D51F4330069F59C /* CoreDataModel */ = {
 			isa = PBXGroup;
 			children = (
+				3E103A191D5DF702005A5E60 /* Statistic+CoreDataProperties.h */,
+				3E103A1A1D5DF702005A5E60 /* Statistic+CoreDataProperties.m */,
+				3E103A1B1D5DF702005A5E60 /* Statistic.h */,
+				3E103A1C1D5DF702005A5E60 /* Statistic.m */,
 				3E2B99A21D521FC40069F59C /* Dictionary+CoreDataProperties.h */,
 				3E2B99A31D521FC40069F59C /* Dictionary+CoreDataProperties.m */,
 				3E2B99A41D521FC40069F59C /* Dictionary.h */,
@@ -296,7 +306,9 @@
 				3EC9D7101D37C75D009B0B59 /* EnglishMemTrainer.xcdatamodeld in Sources */,
 				3EC9D7071D37C75D009B0B59 /* AppDelegate.m in Sources */,
 				3E2B99A61D521FC40069F59C /* Dictionary+CoreDataProperties.m in Sources */,
+				3E103A1D1D5DF702005A5E60 /* Statistic+CoreDataProperties.m in Sources */,
 				3E2B99921D51F4330069F59C /* Vocabluary.m in Sources */,
+				3E103A1E1D5DF702005A5E60 /* Statistic.m in Sources */,
 				3EE703F91D48ED0E00A73446 /* StatisticViewController.m in Sources */,
 				3EC9D71E1D37CA03009B0B59 /* MainInteractiveViewController.m in Sources */,
 				3EA9020F1D42465F003868C9 /* CustomButton.m in Sources */,
