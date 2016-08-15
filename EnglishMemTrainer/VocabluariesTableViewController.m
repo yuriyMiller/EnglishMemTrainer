@@ -1,58 +1,66 @@
 //
-//  SideBarTableViewController.m
+//  VocabluariesTableViewController.m
 //  EnglishMemTrainer
 //
-//  Created by MacBookPro - Yuriy  on 7/14/16.
+//  Created by MacBookPro - Yuriy  on 8/15/16.
 //  Copyright © 2016 com.mac.yuriy. All rights reserved.
 //
 
-#import "SideBarTableViewController.h"
-#import "MenuTableViewCell.h"
-#import "MainInteractiveViewController.h"
-#import "SettingsTableViewController.h"
+#import "VocabluariesTableViewController.h"
+#import "SWRevealViewController.h"
 
-@interface SideBarTableViewController () {
-    NSArray *menuItems;
-}
+
+@interface VocabluariesTableViewController ()
 
 @end
 
-@implementation SideBarTableViewController
+@implementation VocabluariesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menuItems = [[NSArray alloc] initWithObjects:@"Play", @"Vocabluaries", @"Settings", @"About", nil];
-    self.tableView.contentInset = UIEdgeInsetsMake(100, 0, 0, 0);
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+    [self setupRevealController];
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
-    return 1;
+- (void)setupRevealController {
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if (revealViewController) {
+        UIBarButtonItem *menuButton = [[UIBarButtonItem alloc]
+                                       initWithImage:[UIImage
+                                                      imageNamed:@"reveal-icon.png"]
+                                       style:UIBarButtonItemStylePlain
+                                       target:self.revealViewController
+                                       action:@selector(revealToggle:)];
+        [self.navigationItem setLeftBarButtonItem:menuButton];
+        [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    }
 }
+#pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return [menuItems count];
+    return 5;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *identier = [menuItems objectAtIndex:indexPath.row];
-    MenuTableViewCell *cell = (MenuTableViewCell *)[tableView dequeueReusableCellWithIdentifier:identier  forIndexPath:indexPath];
-    cell.menuTitleLable.text = identier;
-
+    static NSString *cellID = @"VocabluaryCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:cellID];
+    }
+    
+    cell.textLabel.text = @"Test";
     
     return cell;
 }
@@ -92,23 +100,14 @@
 }
 */
 
-
+/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destController = (UINavigationController *)segue.destinationViewController;
-    destController.title = [menuItems objectAtIndex:indexPath.row];
-    
-    if ([segue.identifier isEqualToString:@"Play"]) {
-        MainInteractiveViewController *mainViewController = (MainInteractiveViewController *)[destController topViewController];
-        
-    } else if ([segue.identifier isEqualToString:@"Settings"] ) {
-        SettingsTableViewController *settingsController = (SettingsTableViewController *)[destController topViewController];
-    }
-
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
 }
-
+*/
 
 @end

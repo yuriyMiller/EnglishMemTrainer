@@ -22,5 +22,6 @@
 - (NSArray *)fetchRequestWithEntityName:(NSString *)entityName;
 - (void)printFetchedResult:(NSArray *)array;
 - (void)removeAllEntities;
+- (void)removeEntityWithName:(NSString *)entityName;
 
 @end

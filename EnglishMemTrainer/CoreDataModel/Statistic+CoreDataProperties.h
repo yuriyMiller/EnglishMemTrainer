@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSNumber *incorrect;
 @property (nullable, nonatomic, retain) NSNumber *total;
 @property (nullable, nonatomic, retain) NSNumber *restWords;
-@property (nullable, nonatomic, retain) NSDate *sessionTime;
+@property (nullable, nonatomic, retain) NSString *sessionTime;
 @property (nullable, nonatomic, retain) NSDate *avarageTime;
 @property (nullable, nonatomic, retain) NSNumber *important;
 @property (nullable, nonatomic, retain) NSNumber *pages;

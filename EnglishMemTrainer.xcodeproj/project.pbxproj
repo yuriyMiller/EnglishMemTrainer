@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E103A1D1D5DF702005A5E60 /* Statistic+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E103A1A1D5DF702005A5E60 /* Statistic+CoreDataProperties.m */; };
 		3E103A1E1D5DF702005A5E60 /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E103A1C1D5DF702005A5E60 /* Statistic.m */; };
+		3E103A211D61EFC9005A5E60 /* VocabluariesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E103A201D61EFC9005A5E60 /* VocabluariesTableViewController.m */; };
 		3E1D41311D58C83D00794A54 /* info-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E1D41301D58C83D00794A54 /* info-icon.png */; };
 		3E2B996D1D4FA21B0069F59C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3E2B996C1D4FA21B0069F59C /* .gitignore */; };
 		3E2B998F1D51F4330069F59C /* Storage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2B99861D51F4330069F59C /* Storage+CoreDataProperties.m */; };
@@ -41,6 +42,8 @@
 		3E103A1A1D5DF702005A5E60 /* Statistic+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Statistic+CoreDataProperties.m"; sourceTree = "<group>"; };
 		3E103A1B1D5DF702005A5E60 /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
 		3E103A1C1D5DF702005A5E60 /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
+		3E103A1F1D61EFC9005A5E60 /* VocabluariesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VocabluariesTableViewController.h; sourceTree = "<group>"; };
+		3E103A201D61EFC9005A5E60 /* VocabluariesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VocabluariesTableViewController.m; sourceTree = "<group>"; };
 		3E1D41301D58C83D00794A54 /* info-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-icon.png"; sourceTree = "<group>"; };
 		3E2B996C1D4FA21B0069F59C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3E2B99851D51F4330069F59C /* Storage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Storage+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				3E963C651D38EA8500E4E8A7 /* SettingsTableViewController.m */,
 				3E963C611D37EC0F00E4E8A7 /* SideBarTableViewController.h */,
 				3E963C621D37EC0F00E4E8A7 /* SideBarTableViewController.m */,
+				3E103A1F1D61EFC9005A5E60 /* VocabluariesTableViewController.h */,
+				3E103A201D61EFC9005A5E60 /* VocabluariesTableViewController.m */,
 				3EA9020D1D42465F003868C9 /* CustomButton.h */,
 				3EA9020E1D42465F003868C9 /* CustomButton.m */,
 				3EC9D70B1D37C75D009B0B59 /* Main.storyboard */,
@@ -301,6 +306,7 @@
 				3E2B99951D51F51F0069F59C /* CoreDataManager.m in Sources */,
 				3E2B99AA1D5236020069F59C /* EnglishMemConst.m in Sources */,
 				3E2B99911D51F4330069F59C /* Vocabluary+CoreDataProperties.m in Sources */,
+				3E103A211D61EFC9005A5E60 /* VocabluariesTableViewController.m in Sources */,
 				3E963C661D38EA8500E4E8A7 /* SettingsTableViewController.m in Sources */,
 				3E2B998F1D51F4330069F59C /* Storage+CoreDataProperties.m in Sources */,
 				3EC9D7101D37C75D009B0B59 /* EnglishMemTrainer.xcdatamodeld in Sources */,

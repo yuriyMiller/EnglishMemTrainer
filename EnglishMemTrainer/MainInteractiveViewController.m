@@ -27,6 +27,7 @@ static NSString * const answerPlaceholder = @"Answer";
     int _sessionMin;
     int _correctResult;
     int _incorrectResult;
+    NSString *_sessionTimerResult;
 }
 
 @property (strong, nonatomic) NSMutableArray *answeredIndexesArray;
@@ -192,6 +193,15 @@ static NSString * const answerPlaceholder = @"Answer";
     }
 }
 
+- (NSDictionary *)getStatisticParams {
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@(_correctResult), @"correct",
+                            @(_incorrectResult), @"incorrect",
+                            @(self.dictObjectsArray.count), @"total",
+                            _sessionTimerResult, @"sessionTime",
+                            googleVocab, @"currentPage", nil];
+    return params;
+}
+
 #pragma mark - Private methods
 
 - (void)printElements:(id)elements {
@@ -268,7 +278,7 @@ static NSString * const answerPlaceholder = @"Answer";
     [[CoreDataManager sharedManager] addStorageWithName:@"Main Storage"];
     Vocabluary *vocab = [[CoreDataManager sharedManager] addVocabluaryWithName:googleVocab];
     [vocab addDictionaries:[NSMutableSet setWithArray:self.dictObjectsArray]];
-    Statistic *statistic = [[CoreDataManager sharedManager] addStatistic];
+    Statistic *statistic = [[CoreDataManager sharedManager] addStatisticWithParams:[self getStatisticParams]];
     statistic.vocabluary = vocab;
     //[[CoreDataManager sharedManager] removeAllEntities];
 }
@@ -331,8 +341,8 @@ static NSString * const answerPlaceholder = @"Answer";
 - (void)sessionTimerTick:(NSTimer *)timer {
     _sessionSec++;
     if (_sessionSec % 5 == 0) {
-        NSString *timerResult = [NSString stringWithFormat:@"%02d:%02d", _sessionMin, _sessionSec];
-        NSLog(@"%@", timerResult);
+        _sessionTimerResult = [NSString stringWithFormat:@"%02d:%02d", _sessionMin, _sessionSec];
+        NSLog(@"%@", _sessionTimerResult);
     }
     
     if (_sessionSec == 60) {
@@ -449,20 +459,15 @@ static NSString * const answerPlaceholder = @"Answer";
 
 - (IBAction)actionInfo:(UIButton *)sender {
     StatisticViewController *statisticVC = [self.storyboard instantiateViewControllerWithIdentifier:@"StatisticViewController"];
-    statisticVC.correctResult = [NSString stringWithFormat:@"%i", _correctResult];
-    statisticVC.incorrectResult = [NSString stringWithFormat:@"%i", _incorrectResult];
-    statisticVC.totalResult = [NSString stringWithFormat:@"%i", _correctResult + _incorrectResult];
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@(_correctResult), @"correct",
-                                                                        @(_incorrectResult), @"incorrect",
-                                                                        @(self.dictObjectsArray.count), @"total",
-                                                                        self.pauseStart, @"sessionTime",
-                                                                        googleVocab, @"currentPage",
-                            nil];
+//    statisticVC.correctResult = [NSString stringWithFormat:@"%i", _correctResult];
+//    statisticVC.incorrectResult = [NSString stringWithFormat:@"%i", _incorrectResult];
+//    statisticVC.totalResult = [NSString stringWithFormat:@"%i", _correctResult + _incorrectResult];
+    NSDictionary *params = [self getStatisticParams];
+    //[[CoreDataManager sharedManager] removeEntityWithName:@"Statistic"];
     Statistic *statisticObject = [[CoreDataManager sharedManager] addStatisticWithParams:params];
+    statisticVC.statisticObj = statisticObject;
 
-    
     [self.navigationController pushViewController:statisticVC animated:YES];
-    
 }
 
 - (void)actionSegment:(UISegmentedControl *)sender {

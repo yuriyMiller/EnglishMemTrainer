@@ -17,7 +17,7 @@
         <attribute name="incorrect" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="pages" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="restWords" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="sessionTime" optional="YES" attributeType="Date" minDateTimeInterval="492696780" maxDateTimeInterval="618927180" syncable="YES"/>
+        <attribute name="sessionTime" optional="YES" attributeType="String" minValueString="0" maxValueString="100" syncable="YES"/>
         <attribute name="total" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <relationship name="vocabluary" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Vocabluary" inverseName="statistic" inverseEntity="Vocabluary" syncable="YES"/>
     </entity>

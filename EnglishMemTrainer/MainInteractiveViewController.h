@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet  UIView *startButtonConteiner;
 @property (weak, nonatomic) UIBarButtonItem *menuButton;
 
-
 @property (strong, nonatomic) NSDictionary *contentDict;
 @property (strong, nonatomic) NSMutableArray *dictObjectsArray;
 @property (strong, nonatomic) NSMutableArray *correctAnswersArray;

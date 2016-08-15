@@ -92,10 +92,11 @@
 - (Statistic *)addStatisticWithParams:(NSDictionary *)dict {
     NSManagedObjectContext *context = managedObjectCOntext;
     Statistic *statisticObject = [Statistic insertNewObjectIntoContext:context];
-    statisticObject.correct = dict[@""];
-    statisticObject.incorrect = dict[@""];
-    statisticObject.total = dict[@""];
-    statisticObject.currentPage = dict[@""];
+    statisticObject.correct = dict[@"correct"];
+    statisticObject.incorrect = dict[@"incorrect"];
+    statisticObject.total = dict[@"total"];
+    statisticObject.sessionTime = dict[@"sessionTime"];
+    statisticObject.currentPage = dict[@"currentPage"];
     
     [self saveWithContext:context];
     return statisticObject;

@@ -12,7 +12,7 @@
 @implementation Statistic
 
 + (NSString *)entityName {
-        return @"Vocabluary";
+        return @"Statistic";
 }
     
 + (instancetype)insertNewObjectIntoContext:(NSManagedObjectContext *)context {
